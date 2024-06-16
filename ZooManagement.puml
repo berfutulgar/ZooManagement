@@ -1,0 +1,28 @@
+@startuml ZooManagement
+class Hayvan {
+  - tur: String
+  - agirlik: double
+  - yas: int
+  + getDosage(): double
+  + getFeedSchedule(): String
+}
+
+class Atlar {
+  + getDosage(): double
+  + getFeedSchedule(): String
+}
+
+class Kedigiller {
+  + getDosage(): double
+  + getFeedSchedule(): String
+}
+
+class Kemirgenler {
+  + getDosage(): double
+  + getFeedSchedule(): String
+}
+
+Hayvan <|-- Atlar
+Hayvan <|-- Kedigiller
+Hayvan <|-- Kemirgenler
+@enduml
