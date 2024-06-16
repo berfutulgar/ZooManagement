@@ -1,0 +1,51 @@
+@startuml
+
+class HavaYoluSirketi {
+  - kimlik: String
+  + ad: String
+  + ucaklar: List<Ucak>
+  + pilotlar: List<Pilot>
+}
+
+class Ucak {
+  - kimlik: String
+  + tip: String
+  + durum: String // "Calisir" veya "Onarimda"
+}
+
+class Ucus {
+  - kimlik: String
+  + kalkisHavaalani: Havaalani
+  + inisHavaalani: Havaalani
+  + kalkisSaati: Date
+  + inisSaati: Date
+  + pilot: Pilot
+  + yardimciPilot: Pilot
+}
+
+class Havaalani {
+  - kimlik: String
+  + ad: String
+}
+
+class Pilot {
+  - kimlik: String
+  + ad: String
+  + deneyimSeviyesi: int
+}
+
+class YardimciPilot {
+  - kimlik: String
+  + ad: String
+} 
+
+HavaYoluSirketi "1" -- "0..*" Ucak
+HavaYoluSirketi "1" -- "0..*" Pilot
+Ucus "1" -- "1" Havaalani : kalkis
+Ucus "1" -- "1" Havaalani : inis
+Ucus "1" -- "1" Pilot
+Ucus "1" -- "1" YardimciPilot
+Havaalani "0..*" -- "0..*" Ucus : kalkis
+Havaalani "0..*" -- "0..*" Ucus : inis
+
+@enduml
